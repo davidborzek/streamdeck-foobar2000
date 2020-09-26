@@ -117,7 +117,7 @@
   "Icon": "images/plugin/plugin",
   "Category": "Foobar2000",
   "CategoryIcon": "images/plugin/category",
-  "Version": "1.4",
+  "Version": "1.0",
   "OS": [
     {
       "Platform": "mac",
