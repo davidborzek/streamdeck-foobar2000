@@ -17,18 +17,13 @@ class PlayPauseAction extends Action {
       if (!success) {
         websocketUtils.showAlert(this.context);
         console.log(msg);
-      } else {
-        websocketUtils.setState(
-          this.context,
-          state === PlaybackState.paused
-            ? PlaybackState.playing
-            : PlaybackState.paused
-        );
       }
     });
   };
 
-  onKeyUp = (coordinates, state) => {};
+  onKeyUp = (coordinates, state) => {
+    websocketUtils.setState(this.context, state);
+  };
 
   onWillAppear = (coordinates) => {
     websocketUtils.setState(

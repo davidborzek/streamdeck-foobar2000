@@ -1,17 +1,11 @@
-/* var eventSource = new EventSource(
-  "http://localhost:8880/api/query/updates?player=true&trcolumns=%25artist%25%20-%20%25title%25%2C%25artist%25%20-%20%25album%25%20-%20%25title%25&playlists=true&playlistItems=true&plref=p1&plcolumns=%25artist%25%2C%25title%25&plrange=0%3A100"
-);
-
-eventSource.onmessage = function (e) {
-  console.log(e);
-}; */
-
-////////////////////////////////////////////////////
-
 let websocket = null;
 let pluginUUID = null;
 
 let actions;
+
+let contexts = {
+  playPauseAction: [],
+};
 
 const DestinationEnum = Object.freeze({
   HARDWARE_AND_SOFTWARE: 0,
@@ -49,9 +43,6 @@ const connectElgatoStreamDeckSocket = (
 
     if (event === "keyDown" || event === "keyUp") {
       const { state } = payload;
-
-      console.log(payload);
-
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
           event === "keyDown"
@@ -62,6 +53,7 @@ const connectElgatoStreamDeckSocket = (
     } else if (event == "willAppear") {
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
+          contexts[key].push(context);
           actions[key].onWillAppear(coordinates);
         }
       });

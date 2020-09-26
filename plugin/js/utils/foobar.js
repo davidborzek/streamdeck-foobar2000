@@ -6,9 +6,12 @@ const foobar = {
   },
   togglePlayPause: async (callback) => {
     try {
-      const response = await axios.post(`${baseUrl}/player/pause/toggle`, {
-        timeout: 500,
-      });
+      const response = await axios.post(
+        `${foobar.baseUrl}/player/pause/toggle`,
+        {
+          timeout: 500,
+        }
+      );
       callback(response.status > 200, response.data);
     } catch (e) {
       callback(false, e);
