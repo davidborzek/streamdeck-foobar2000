@@ -18,6 +18,25 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Toggle play / pause.",
       "UUID": "com.davidborzek.foobar2000.playpause"
+    },
+    {
+      "Icon": "images/actions/toggleMute/toggleMute",
+      "Name": "Togge mute",
+      "States": [
+        {
+          "Image": "images/keys/unmuted/unmuted",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        },
+        {
+          "Image": "images/keys/muted/muted",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Toggle mute.",
+      "UUID": "com.davidborzek.foobar2000.togglemute"
     }
   ],
   "SDKVersion": 2,

@@ -4,5 +4,9 @@
   "com.davidborzek.foobar2000.action": {
     "Name": "Play / pause",
     "Tooltip": "Toggle play / pause."
+  },
+  "com.davidborzek.foobar2000.togglemute": {
+    "Name": "Toggle mute",
+    "Tooltip": "Toggle mute."
   }
 }
