@@ -28,5 +28,9 @@
   "com.davidborzek.foobar2000.volumedown": {
     "Name": "Lautstärke minus",
     "Tooltip": "Verringert die Lautstärke."
+  },
+  "com.davidborzek.foobar2000.stop": {
+    "Name": "Stop",
+    "Tooltip": "Stoppt die Wiedergabe."
   }
 }

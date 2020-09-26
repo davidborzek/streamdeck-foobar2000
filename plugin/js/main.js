@@ -9,6 +9,7 @@ let actions = {
   skipBackwardAction: new SkipBackwardAction(),
   volumeUpAction: new VolumeUpAction(),
   volumeDownAction: new VolumeDownAction(),
+  stopAction: new StopAction(),
 };
 
 let contexts = {

@@ -107,6 +107,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Turn the volume down.",
       "UUID": "com.davidborzek.foobar2000.volumedown"
+    },
+    {
+      "Icon": "images/actions/stop/stop",
+      "Name": "Stop",
+      "States": [
+        {
+          "Image": "images/keys/stop/stop",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Stops the playback.",
+      "UUID": "com.davidborzek.foobar2000.stop"
     }
   ],
   "SDKVersion": 2,

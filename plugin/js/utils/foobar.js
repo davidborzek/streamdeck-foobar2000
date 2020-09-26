@@ -68,4 +68,14 @@ const foobar = {
       callback(false, e);
     }
   },
+  stop: async (callback) => {
+    try {
+      const response = await axios.post(`${foobar.baseUrl}/player/stop`, {
+        timeout: 500,
+      });
+      callback(response.status > 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
 };
