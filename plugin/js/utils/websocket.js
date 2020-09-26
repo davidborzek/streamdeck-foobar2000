@@ -9,13 +9,13 @@ const websocketUtils = {
       websocket.send(JSON.stringify(data));
     }
   },
-  setTitle: (context, keyPressCounter) => {
+  setTitle: (context, title) => {
     if (websocket) {
       const data = {
         event: "setTitle",
         context,
         payload: {
-          title: "" + keyPressCounter,
+          title,
           target: DestinationEnum.HARDWARE_AND_SOFTWARE,
         },
       };
