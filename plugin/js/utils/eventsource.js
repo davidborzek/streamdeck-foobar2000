@@ -1,32 +1,26 @@
-const updatePlayPauseActions = (data) => {
+const updatePlayPauseActions = (player) => {
   contexts.playPauseAction.forEach((context) => {
-    data.player &&
-      data.player.playbackState &&
-      websocketUtils.setState(
-        context,
-        PlaybackState[data.player.playbackState]
-      );
+    player.playbackState &&
+      websocketUtils.setState(context, PlaybackState[player.playbackState]);
   });
 };
 
-const updateToggleMuteActions = (data) => {
+const updateToggleMuteActions = (player) => {
   contexts.toggleMuteAction.forEach((context) => {
-    data.player &&
-      data.player.volume &&
+    player.volume &&
       websocketUtils.setState(
         context,
-        data.player.volume.isMuted ? MuteState.muted : MuteState.unmuted
+        player.volume.isMuted ? MuteState.muted : MuteState.unmuted
       );
   });
 };
 
-const updateCurrentVolumeActions = (data) => {
+const updateCurrentVolumeActions = (player) => {
   contexts.currentVolumeAction.forEach((context) => {
-    data.player &&
-      data.player.volume &&
+    player.volume &&
       websocketUtils.setTitle(
         context,
-        `${Math.ceil(100 + data.player.volume.value)}`
+        `${Math.ceil(100 + player.volume.value)}`
       );
   });
 };
@@ -36,8 +30,11 @@ const eventSource = new EventSource(
 );
 
 eventSource.onmessage = function ({ data }) {
-  data = JSON.parse(data);
-  updatePlayPauseActions(data);
-  updateToggleMuteActions(data);
-  updateCurrentVolumeActions(data);
+  const { player } = JSON.parse(data);
+  if (player) {
+    foobarPlayerState = player;
+    updatePlayPauseActions(player);
+    updateToggleMuteActions(player);
+    updateCurrentVolumeActions(player);
+  }
 };
