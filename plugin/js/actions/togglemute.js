@@ -11,7 +11,15 @@ class ToggleMuteAction extends Action {
     this.foobarMuteState = foobarMuteState;
   }
 
-  onKeyDown = (coordinates, state) => {};
+  onKeyDown = (coordinates, state) => {
+    foobar.setMuteStatus(state !== MuteState.muted, (success, message) => {
+      websocketUtils.setState(this.context, state);
+      if (!success) {
+        websocketUtils.showAlert(this.context);
+        console.log(message);
+      }
+    });
+  };
 
   onKeyUp = (coordinates, state) => {
     websocketUtils.setState(this.context, state);
