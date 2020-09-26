@@ -11,13 +11,24 @@ class PlayPauseAction extends Action {
   };
 
   onKeyDown = (coordinates, state) => {
-    foobar.togglePlayPause((success, msg) => {
-      websocketUtils.setState(this.context, state);
-      if (!success) {
-        websocketUtils.showAlert(this.context);
-        console.log(msg);
-      }
-    });
+    console.log(this.foobarPlaybackState);
+    if (this.foobarPlaybackState === "stopped") {
+      foobar.playRandom((success, msg) => {
+        websocketUtils.setState(this.context, state);
+        if (!success) {
+          websocketUtils.showAlert(this.context);
+          console.log(msg);
+        }
+      });
+    } else {
+      foobar.togglePlayPause((success, msg) => {
+        websocketUtils.setState(this.context, state);
+        if (!success) {
+          websocketUtils.showAlert(this.context);
+          console.log(msg);
+        }
+      });
+    }
   };
 
   onKeyUp = (coordinates, state) => {

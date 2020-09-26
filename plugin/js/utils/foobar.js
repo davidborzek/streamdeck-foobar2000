@@ -78,4 +78,17 @@ const foobar = {
       callback(false, e);
     }
   },
+  playRandom: async (callback) => {
+    try {
+      const response = await axios.post(
+        `${foobar.baseUrl}/player/play/random`,
+        {
+          timeout: 500,
+        }
+      );
+      callback(response.status > 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
 };
