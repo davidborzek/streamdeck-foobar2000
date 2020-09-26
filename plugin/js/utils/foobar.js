@@ -31,4 +31,14 @@ const foobar = {
       callback(false, e);
     }
   },
+  skipForward: async (callback) => {
+    try {
+      const response = await axios.post(`${foobar.baseUrl}/player/next`, {
+        timeout: 500,
+      });
+      callback(response.status > 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
 };

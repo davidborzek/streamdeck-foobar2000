@@ -64,7 +64,7 @@
       ],
       "SupportedInMultiActions": false,
       "Tooltip": "Skip to the next song.",
-      "UUID": "com.davidborzek.foobar2000.skipForward"
+      "UUID": "com.davidborzek.foobar2000.skipforward"
     }
   ],
   "SDKVersion": 2,

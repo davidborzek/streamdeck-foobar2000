@@ -6,10 +6,6 @@ class CurrentVolumeAction extends Action {
     this.foobarCurrentVolume = foobarCurrentVolume;
   }
 
-  onKeyDown = (coordinates, state) => {};
-
-  onKeyUp = (coordinates, state) => {};
-
   onWillAppear = (coordinates) => {
     websocketUtils.setTitle(
       this.context,

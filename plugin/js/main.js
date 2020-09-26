@@ -51,6 +51,7 @@ const connectElgatoStreamDeckSocket = (
         settings,
         foobarPlayerState.volume.value
       ),
+      skipForwardAction: new SkipForwardAction(context, settings),
     };
 
     if (event === "keyDown" || event === "keyUp") {
@@ -58,15 +59,15 @@ const connectElgatoStreamDeckSocket = (
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
           event === "keyDown"
-            ? actions[key].onKeyDown(coordinates, state)
-            : actions[key].onKeyUp(coordinates, state);
+            ? actions[key] && actions[key].onKeyDown(coordinates, state)
+            : actions[key] && actions[key].onKeyUp(coordinates, state);
         }
       });
     } else if (event == "willAppear") {
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
-          contexts[key].push(context);
-          actions[key].onWillAppear(coordinates);
+          contexts[key] && contexts[key].push(context);
+          actions[key] && actions[key].onWillAppear(coordinates);
         }
       });
     }
