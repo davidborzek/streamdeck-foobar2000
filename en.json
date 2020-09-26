@@ -1,0 +1,8 @@
+{
+  "Description": "Control a foobar2000 instance.",
+  "Name": "Foobar2000",
+  "com.davidborzek.foobar2000.action": {
+    "Name": "Play / pause",
+    "Tooltip": "Toggle play / pause."
+  }
+}

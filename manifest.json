@@ -1,0 +1,45 @@
+{
+  "Actions": [
+    {
+      "Icon": "images/actions/playpause/playpause",
+      "Name": "Play / pause",
+      "States": [
+        {
+          "Image": "images/keys/play/play",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        },
+        {
+          "Image": "images/keys/pause/pause",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Toggle play / pause.",
+      "UUID": "com.davidborzek.foobar2000.playpause"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "David Borzek",
+  "CodePath": "plugin/index.html",
+  "Description": "Control a foobar2000 instance.",
+  "Name": "Foobar2000",
+  "Icon": "images/plugin/plugin",
+  "Category": "Foobar2000",
+  "CategoryIcon": "images/plugin/category",
+  "Version": "1.4",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "4.1"
+  }
+}

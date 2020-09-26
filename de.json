@@ -1,0 +1,8 @@
+{
+  "Description": "Steuere Foobar2000.",
+  "Name": "Foobar2000",
+  "com.davidborzek.foobar2000.action": {
+    "Name": "Play / pause",
+    "Tooltip": "Schalter zum wechseln zwischen Play und Pause."
+  }
+}
