@@ -5,6 +5,7 @@ let actions;
 
 let contexts = {
   playPauseAction: [],
+  toggleMuteAction: [],
 };
 
 const DestinationEnum = Object.freeze({
@@ -38,6 +39,11 @@ const connectElgatoStreamDeckSocket = (
         context,
         settings,
         foobarPlayerState.playbackState
+      ),
+      toggleMuteAction: new ToggleMuteAction(
+        context,
+        settings,
+        foobarPlayerState.volume.isMuted
       ),
     };
 
