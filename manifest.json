@@ -21,7 +21,7 @@
     },
     {
       "Icon": "images/actions/toggleMute/toggleMute",
-      "Name": "Togge mute",
+      "Name": "Toggle mute",
       "States": [
         {
           "Image": "images/keys/unmuted/unmuted",
