@@ -16,6 +16,8 @@ let contexts = {
   currentVolumeAction: [],
 };
 
+let foobarPlayerState;
+
 const DestinationEnum = Object.freeze({
   HARDWARE_AND_SOFTWARE: 0,
   HARDWARE_ONLY: 1,
@@ -32,15 +34,14 @@ const connectElgatoStreamDeckSocket = (
 
   websocket = new WebSocket("ws://127.0.0.1:" + inPort);
 
-  websocket.onopen = () => {
+  websocket.onopen = async () => {
+    foobarPlayerState = await foobar.getPlayerState();
     websocketUtils.registerPlugin(pluginUUID, inRegisterEvent);
   };
 
-  websocket.onmessage = async (evt) => {
+  websocket.onmessage = (evt) => {
     const { event, action, context, payload } = JSON.parse(evt.data);
     const { settings, coordinates } = payload || {};
-
-    const foobarPlayerState = await foobar.getPlayerState();
 
     actions.currentVolumeAction.setCurrentVolume(
       foobarPlayerState.volume.value
