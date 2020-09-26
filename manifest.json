@@ -51,6 +51,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Shows the current volume.",
       "UUID": "com.davidborzek.foobar2000.currentvolume"
+    },
+    {
+      "Icon": "images/actions/skipForward/skipForward",
+      "Name": "Skip forward",
+      "States": [
+        {
+          "Image": "images/keys/skipForward/skipForward",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Skip to the next song.",
+      "UUID": "com.davidborzek.foobar2000.skipForward"
     }
   ],
   "SDKVersion": 2,

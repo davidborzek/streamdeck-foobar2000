@@ -12,5 +12,9 @@
   "com.davidborzek.foobar2000.currentvolume": {
     "Name": "Aktuelle Lautstärke",
     "Tooltip": "Zeigt die aktuelle Lautstärke an."
+  },
+  "com.davidborzek.foobar2000.skipForward": {
+    "Name": "Vorwärts springen",
+    "Tooltip": "Zum nächsten Song springen."
   }
 }

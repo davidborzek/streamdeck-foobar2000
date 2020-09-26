@@ -12,5 +12,9 @@
   "com.davidborzek.foobar2000.currentvolume": {
     "Name": "Current volume",
     "Tooltip": "Shows the current volume."
+  },
+  "com.davidborzek.foobar2000.skipForward": {
+    "Name": "Skip forward",
+    "Tooltip": "Shows the current volume."
   }
 }
