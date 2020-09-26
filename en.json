@@ -17,15 +17,14 @@
     "Name": "Skip forward",
     "Tooltip": "Skip to the next song."
   },
-  "com.davidborzek.foobar2000.skipbackward" {
+  "com.davidborzek.foobar2000.skipbackward": {
     "Name": "Skip backwards",
     "Tooltip": "Skip to the previous song."
   },
   "com.davidborzek.foobar2000.volumeup": {
     "Name": "Volume up",
     "Tooltip": "Turn the volume up."
-  }
-  ,
+  },
   "com.davidborzek.foobar2000.volumedown": {
     "Name": "Volume down",
     "Tooltip": "Turn the volume down."
