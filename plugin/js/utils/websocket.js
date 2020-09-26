@@ -48,4 +48,14 @@ const websocketUtils = {
       websocket.send(JSON.stringify(data));
     }
   },
+  showAlert: (context) => {
+    if (websocket) {
+      var json = {
+        event: "showAlert",
+        context,
+      };
+
+      websocket.send(JSON.stringify(json));
+    }
+  },
 };

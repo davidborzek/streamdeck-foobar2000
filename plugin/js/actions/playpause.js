@@ -11,14 +11,26 @@ class PlayPauseAction extends Action {
     this.foobarPlaybackState = foobarPlaybackState;
   }
 
-  onKeyDown = (coordinates, userDesiredState) => {
-    foobar.togglePlayPause();
+  onKeyDown = (coordinates, state) => {
+    foobar.togglePlayPause((success, msg) => {
+      websocketUtils.setState(this.context, state);
+      if (!success) {
+        websocketUtils.showAlert(this.context);
+        console.log(msg);
+      } else {
+        websocketUtils.setState(
+          this.context,
+          state === PlaybackState.paused
+            ? PlaybackState.playing
+            : PlaybackState.paused
+        );
+      }
+    });
   };
 
-  onKeyUp = (coordinates, userDesiredState) => {};
+  onKeyUp = (coordinates, state) => {};
 
   onWillAppear = (coordinates) => {
-    console.log(this.foobarPlaybackState);
     websocketUtils.setState(
       this.context,
       PlaybackState[this.foobarPlaybackState]

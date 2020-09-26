@@ -48,13 +48,15 @@ const connectElgatoStreamDeckSocket = (
     };
 
     if (event === "keyDown" || event === "keyUp") {
-      const { userDesiredState } = payload;
+      const { state } = payload;
+
+      console.log(payload);
 
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
           event === "keyDown"
-            ? actions[key].onKeyDown(coordinates, userDesiredState)
-            : actions[key].onKeyUp(coordinates, userDesiredState);
+            ? actions[key].onKeyDown(coordinates, state)
+            : actions[key].onKeyUp(coordinates, state);
         }
       });
     } else if (event == "willAppear") {
