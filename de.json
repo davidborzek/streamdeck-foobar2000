@@ -8,5 +8,9 @@
   "com.davidborzek.foobar2000.togglemute": {
     "Name": "Ton an / aus",
     "Tooltip": "Ton an- oder ausschalten."
+  },
+  "com.davidborzek.foobar2000.currentvolume": {
+    "Name": "Aktuelle Lautstärke",
+    "Tooltip": "Zeigt die aktuelle Lautstärke an."
   }
 }

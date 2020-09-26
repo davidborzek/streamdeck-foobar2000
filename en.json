@@ -8,5 +8,9 @@
   "com.davidborzek.foobar2000.togglemute": {
     "Name": "Toggle mute",
     "Tooltip": "Toggle mute."
+  },
+  "com.davidborzek.foobar2000.currentvolume": {
+    "Name": "Current volume",
+    "Tooltip": "Shows the current volume."
   }
 }

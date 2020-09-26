@@ -37,6 +37,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Toggle mute.",
       "UUID": "com.davidborzek.foobar2000.togglemute"
+    },
+    {
+      "Icon": "images/actions/currentVolume/currentVolume",
+      "Name": "Current volume",
+      "States": [
+        {
+          "Image": "images/keys/common/black",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Shows the current volume.",
+      "UUID": "com.davidborzek.foobar2000.currentvolume"
     }
   ],
   "SDKVersion": 2,
