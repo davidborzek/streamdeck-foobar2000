@@ -52,6 +52,7 @@ const connectElgatoStreamDeckSocket = (
         foobarPlayerState.volume.value
       ),
       skipForwardAction: new SkipForwardAction(context, settings),
+      skipBackwardAction: new SkipBackwardAction(context, settings),
     };
 
     if (event === "keyDown" || event === "keyUp") {
