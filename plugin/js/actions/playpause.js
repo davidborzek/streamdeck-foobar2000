@@ -6,10 +6,9 @@ const PlaybackState = Object.freeze({
 class PlayPauseAction extends Action {
   type = "com.davidborzek.foobar2000.playpause";
 
-  constructor(context, settings, foobarPlaybackState) {
-    super(context, settings);
-    this.foobarPlaybackState = foobarPlaybackState;
-  }
+  setPlaybackState = (playbackState) => {
+    this.foobarPlaybackState = playbackState;
+  };
 
   onKeyDown = (coordinates, state) => {
     foobar.togglePlayPause((success, msg) => {

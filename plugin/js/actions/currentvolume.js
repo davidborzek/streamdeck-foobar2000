@@ -1,10 +1,9 @@
 class CurrentVolumeAction extends Action {
   type = "com.davidborzek.foobar2000.currentvolume";
 
-  constructor(context, settings, foobarCurrentVolume) {
-    super(context, settings);
-    this.foobarCurrentVolume = foobarCurrentVolume;
-  }
+  setCurrentVolume = (volume) => {
+    this.foobarCurrentVolume = volume;
+  };
 
   onWillAppear = (coordinates) => {
     websocketUtils.setTitle(

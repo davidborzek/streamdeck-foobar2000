@@ -6,10 +6,9 @@ const MuteState = Object.freeze({
 class ToggleMuteAction extends Action {
   type = "com.davidborzek.foobar2000.togglemute";
 
-  constructor(context, settings, foobarMuteState) {
-    super(context, settings);
-    this.foobarMuteState = foobarMuteState;
-  }
+  setMuteStatus = (muted) => {
+    this.foobarMuteState = muted;
+  };
 
   onKeyDown = (coordinates, state) => {
     foobar.setMuteStatus(state !== MuteState.muted, (success, message) => {

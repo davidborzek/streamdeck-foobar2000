@@ -1,7 +1,14 @@
 let websocket = null;
 let pluginUUID = null;
 
-let actions;
+let actions = {
+  playPauseAction: new PlayPauseAction(),
+  toggleMuteAction: new ToggleMuteAction(),
+  currentVolumeAction: new CurrentVolumeAction(),
+  skipForwardAction: new SkipForwardAction(),
+  skipBackwardAction: new SkipBackwardAction(),
+  volumeUpAction: new VolumeUpAction(),
+};
 
 let contexts = {
   playPauseAction: [],
@@ -35,30 +42,19 @@ const connectElgatoStreamDeckSocket = (
 
     const foobarPlayerState = await foobar.getPlayerState();
 
-    actions = {
-      playPauseAction: new PlayPauseAction(
-        context,
-        settings,
-        foobarPlayerState.playbackState
-      ),
-      toggleMuteAction: new ToggleMuteAction(
-        context,
-        settings,
-        foobarPlayerState.volume.isMuted
-      ),
-      currentVolumeAction: new CurrentVolumeAction(
-        context,
-        settings,
-        foobarPlayerState.volume.value
-      ),
-      skipForwardAction: new SkipForwardAction(context, settings),
-      skipBackwardAction: new SkipBackwardAction(context, settings),
-      volumeUpAction: new VolumeUpAction(
-        context,
-        settings,
-        foobarPlayerState.volume.value
-      ),
-    };
+    actions.currentVolumeAction.setCurrentVolume(
+      foobarPlayerState.volume.value
+    );
+    actions.playPauseAction.setPlaybackState(foobarPlayerState.playbackState);
+    actions.toggleMuteAction.setMuteStatus(foobarPlayerState.volume.isMuted);
+    actions.volumeUpAction.setVolume(foobarPlayerState.volume.value);
+
+    Object.keys(actions).forEach((key) => {
+      if (actions[key].type === action) {
+        actions[key].setContext(context);
+        actions[key].setSettings(settings);
+      }
+    });
 
     if (event === "keyDown" || event === "keyUp") {
       const { state } = payload;
