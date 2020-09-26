@@ -79,6 +79,34 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Skip to the previous song.",
       "UUID": "com.davidborzek.foobar2000.skipbackward"
+    },
+    {
+      "Icon": "images/actions/volumeUp/volumeUp",
+      "Name": "Volume up",
+      "States": [
+        {
+          "Image": "images/keys/volumeUp/volumeUp",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Turn the volume up.",
+      "UUID": "com.davidborzek.foobar2000.volumeup"
+    },
+    {
+      "Icon": "images/actions/volumeDown/volumeDown",
+      "Name": "Volume down",
+      "States": [
+        {
+          "Image": "images/keys/volumeDown/volumeDown",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Turn the volume down.",
+      "UUID": "com.davidborzek.foobar2000.volumedown"
     }
   ],
   "SDKVersion": 2,

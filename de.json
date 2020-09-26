@@ -17,9 +17,16 @@
     "Name": "Vorwärts springen",
     "Tooltip": "Zum nächsten Song springen."
   },
-  ,
-  "com.davidborzek.foobar2000.skipbackward" {
+  "com.davidborzek.foobar2000.skipbackward": {
     "Name": "Rückwärts springen",
     "Tooltip": "Zum vorherigen Song springen."
+  },
+  "com.davidborzek.foobar2000.volumeup": {
+    "Name": "Laustärke plus",
+    "Tooltip": "Erhöht die Lautstärke."
+  },
+  "com.davidborzek.foobar2000.volumedown": {
+    "Name": "Lautstärke minus",
+    "Tooltip": "Verringert die Lautstärke."
   }
 }

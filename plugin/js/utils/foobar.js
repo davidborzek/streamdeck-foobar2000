@@ -51,4 +51,21 @@ const foobar = {
       callback(false, e);
     }
   },
+  setVolume: async (volume, callback) => {
+    if (volume < -100 || volume > 0) {
+      callback(false, "Volume must be between -100 and 0.");
+    }
+    try {
+      const response = await axios.post(
+        `${foobar.baseUrl}/player`,
+        { volume },
+        {
+          timeout: 500,
+        }
+      );
+      callback(response.status > 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
 };
