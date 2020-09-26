@@ -13,8 +13,13 @@
     "Name": "Aktuelle Lautstärke",
     "Tooltip": "Zeigt die aktuelle Lautstärke an."
   },
-  "com.davidborzek.foobar2000.skipForward": {
+  "com.davidborzek.foobar2000.skipforward": {
     "Name": "Vorwärts springen",
     "Tooltip": "Zum nächsten Song springen."
+  },
+  ,
+  "com.davidborzek.foobar2000.skipbackward" {
+    "Name": "Rückwärts springen",
+    "Tooltip": "Zum vorherigen Song springen."
   }
 }

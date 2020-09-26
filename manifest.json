@@ -65,6 +65,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Skip to the next song.",
       "UUID": "com.davidborzek.foobar2000.skipforward"
+    },
+    {
+      "Icon": "images/actions/skipBackward/skipBackward",
+      "Name": "Skip backward",
+      "States": [
+        {
+          "Image": "images/keys/skipBackward/skipBackward",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Skip to the previous song.",
+      "UUID": "com.davidborzek.foobar2000.skipbackward"
     }
   ],
   "SDKVersion": 2,

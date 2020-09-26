@@ -13,8 +13,12 @@
     "Name": "Current volume",
     "Tooltip": "Shows the current volume."
   },
-  "com.davidborzek.foobar2000.skipForward": {
+  "com.davidborzek.foobar2000.skipforward": {
     "Name": "Skip forward",
-    "Tooltip": "Shows the current volume."
+    "Tooltip": "Skip to the next song."
+  },
+  "com.davidborzek.foobar2000.skipbackward" {
+    "Name": "Skip backwards",
+    "Tooltip": "Skip to the previous song."
   }
 }
