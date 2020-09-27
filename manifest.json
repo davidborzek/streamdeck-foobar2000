@@ -121,6 +121,20 @@
       "SupportedInMultiActions": false,
       "Tooltip": "Stops the playback.",
       "UUID": "com.davidborzek.foobar2000.stop"
+    },
+    {
+      "Icon": "images/actions/nowPlaying/nowPlaying",
+      "Name": "Now playing",
+      "States": [
+        {
+          "Image": "images/keys/common/background",
+          "TitleAlignment": "top",
+          "FontSize": "11"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Shows the current playback (artist / title).",
+      "UUID": "com.davidborzek.foobar2000.nowplaying"
     }
   ],
   "SDKVersion": 2,

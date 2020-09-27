@@ -32,5 +32,9 @@
   "com.davidborzek.foobar2000.stop": {
     "Name": "Stop",
     "Tooltip": "Stoppt die Wiedergabe."
+  },
+  "com.davidborzek.foobar2000.nowplaying": {
+    "Name": "Spielt gerade",
+    "Tooltip": "Zeigt die aktuelle Wiedergabe an (Interpret / Titel)."
   }
 }

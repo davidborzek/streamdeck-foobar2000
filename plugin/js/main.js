@@ -10,12 +10,14 @@ let actions = {
   volumeUpAction: new VolumeUpAction(),
   volumeDownAction: new VolumeDownAction(),
   stopAction: new StopAction(),
+  nowPlayingAction: new NowPlayingAction(),
 };
 
 let contexts = {
   playPauseAction: [],
   toggleMuteAction: [],
   currentVolumeAction: [],
+  nowPlayingAction: [],
 };
 
 let foobarPlayerState;
@@ -53,6 +55,7 @@ const connectElgatoStreamDeckSocket = (
       actions.toggleMuteAction.setMuteStatus(foobarPlayerState.volume.isMuted);
       actions.volumeUpAction.setVolume(foobarPlayerState.volume.value);
       actions.volumeDownAction.setVolume(foobarPlayerState.volume.value);
+      actions.nowPlayingAction.setCurrentPlayback(foobarPlayerState.activeItem);
     }
 
     Object.keys(actions).forEach((key) => {

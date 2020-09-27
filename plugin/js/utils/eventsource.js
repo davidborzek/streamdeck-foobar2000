@@ -25,6 +25,16 @@ const updateCurrentVolumeActions = (player) => {
   });
 };
 
+const updateCurrentPlaying = (player) => {
+  contexts.nowPlayingAction.forEach((context) => {
+    player.activeItem.columns.length > 0 &&
+      websocketUtils.setTitle(
+        context,
+        utils.addLineBreak(player.activeItem.columns[0].replace("-", " - "))
+      );
+  });
+};
+
 const parameters = {
   player: "true",
   trcolumns: "%artist%-%title%,%artist%-%album%-%title%",
@@ -48,6 +58,7 @@ eventSource.onmessage = function ({ data }) {
     updatePlayPauseActions(player);
     updateToggleMuteActions(player);
     updateCurrentVolumeActions(player);
+    updateCurrentPlaying(player);
   }
 };
 

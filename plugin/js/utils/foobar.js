@@ -12,7 +12,7 @@ const foobar = {
           timeout: 500,
         }
       );
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
     } catch (e) {
       callback(false, e);
     }
@@ -26,7 +26,7 @@ const foobar = {
           timeout: 500,
         }
       );
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
     } catch (e) {
       callback(false, e);
     }
@@ -36,7 +36,7 @@ const foobar = {
       const response = await axios.post(`${foobar.baseUrl}/player/next`, {
         timeout: 500,
       });
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
     } catch (e) {
       callback(false, e);
     }
@@ -46,7 +46,7 @@ const foobar = {
       const response = await axios.post(`${foobar.baseUrl}/player/previous`, {
         timeout: 500,
       });
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
     } catch (e) {
       callback(false, e);
     }
@@ -63,7 +63,7 @@ const foobar = {
           timeout: 500,
         }
       );
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
     } catch (e) {
       callback(false, e);
     }
@@ -73,7 +73,7 @@ const foobar = {
       const response = await axios.post(`${foobar.baseUrl}/player/stop`, {
         timeout: 500,
       });
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
     } catch (e) {
       callback(false, e);
     }
@@ -86,7 +86,23 @@ const foobar = {
           timeout: 500,
         }
       );
-      callback(response.status > 200, response.data);
+      callback(response.status >= 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
+  getCurrentPlaybackInfo: async (playlistId, itemIndex, callback) => {
+    try {
+      const response = await axios.get(
+        `${foobar.baseUrl}/playlists/${playlistId}/items/${itemIndex}%3A1?columns=%25artist%25,%25title%25`,
+        {
+          timeout: 500,
+        }
+      );
+      callback(
+        response.status >= 200,
+        response.data.playlistItems.items[0].columns
+      );
     } catch (e) {
       callback(false, e);
     }
