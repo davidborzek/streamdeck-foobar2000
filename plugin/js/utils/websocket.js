@@ -9,6 +9,27 @@ const websocketUtils = {
       websocket.send(JSON.stringify(data));
     }
   },
+  requestGlobalSettings: (context) => {
+    if (websocket) {
+      const data = {
+        event: "getGlobalSettings",
+        context,
+      };
+
+      websocket.send(JSON.stringify(data));
+    }
+  },
+  saveSettings: (action, context, payload) => {
+    if (websocket) {
+      const data = {
+        action,
+        event: "setSettings",
+        context,
+        payload,
+      };
+      websocket.send(JSON.stringify(data));
+    }
+  },
   setTitle: (context, title) => {
     if (websocket) {
       const data = {
