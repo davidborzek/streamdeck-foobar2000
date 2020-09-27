@@ -2,9 +2,13 @@
 
 Control Foobar2000 with real-time feedback on your Elgato Stream Deck device.
 
+![screenshot](images/docs/screenshot.PNG)
+
 ## Requirements
 
 Installed Foobar2000 with the [beefweb](https://www.foobar2000.org/components/view/foo_beefweb) plugin.
+
+---
 
 ## Functions
 
@@ -16,3 +20,9 @@ Installed Foobar2000 with the [beefweb](https://www.foobar2000.org/components/vi
 - Stop playback
 
 The status of the keys gets also updated on external controls (like the foobar2000 window).
+
+---
+
+## Credits
+
+- Uses the [beefweb](https://github.com/hyperblast/beefweb) plugin to control foobar2000
