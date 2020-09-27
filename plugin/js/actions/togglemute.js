@@ -25,7 +25,7 @@ class ToggleMuteAction extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    if (this.foobarMuteState) {
+    if (this.foobarMuteState !== undefined) {
       websocketUtils.setState(
         this.context,
         this.foobarMuteState ? MuteState.muted : MuteState.unmuted
