@@ -43,7 +43,7 @@
       "Name": "Current volume",
       "States": [
         {
-          "Image": "images/keys/common/black",
+          "Image": "images/keys/common/background",
           "TitleAlignment": "middle",
           "FontSize": "16"
         }
