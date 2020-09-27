@@ -18,6 +18,7 @@ Installed Foobar2000 with the [beefweb](https://www.foobar2000.org/components/vi
 - Control volume (up / down)
 - Skip forward / backward
 - Stop playback
+- Display the current playback (artist & album) on a key
 
 The status of the keys gets also updated on external controls (like the foobar2000 window).
 
