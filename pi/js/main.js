@@ -60,7 +60,6 @@ const connectElgatoStreamDeckSocket = (
       globalSettings = payload.settings;
     } else if (event == "didReceiveSettings") {
       settings = payload.settings;
-      console.log("didReceiveSettings", settings);
     }
   };
 };
