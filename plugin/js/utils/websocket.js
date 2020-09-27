@@ -37,7 +37,7 @@ const websocketUtils = {
         context,
         payload: {
           title,
-          target: DestinationEnum.HARDWARE_AND_SOFTWARE,
+          target: 0,
         },
       };
 
