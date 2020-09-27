@@ -131,7 +131,7 @@
   "Icon": "images/plugin/plugin",
   "Category": "Foobar2000",
   "CategoryIcon": "images/plugin/category",
-  "Version": "1.1.1",
+  "Version": "1.2",
   "OS": [
     {
       "Platform": "mac",
