@@ -25,8 +25,20 @@ const updateCurrentVolumeActions = (player) => {
   });
 };
 
+const parameters = {
+  player: "true",
+  trcolumns: "%artist%-%title%,%artist%-%album%-%title%",
+  playlists: "true",
+  playlistItems: "true",
+  plref: "p1",
+  plcolumns: "%artist%,%title%",
+  plrange: "0:100",
+};
+
 const eventSource = new EventSource(
-  `${foobar.baseUrl}/query/updates?player=true&trcolumns=%25artist%25%20-%20%25title%25%2C%25artist%25%20-%20%25album%25%20-%20%25title%25&playlists=true&playlistItems=true&plref=p1&plcolumns=%25artist%25%2C%25title%25&plrange=0%3A100`
+  `${foobar.baseUrl}/query/updates?${new URLSearchParams(
+    parameters
+  ).toString()}`
 );
 
 eventSource.onmessage = function ({ data }) {
