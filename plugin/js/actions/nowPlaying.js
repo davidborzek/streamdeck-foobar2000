@@ -6,14 +6,12 @@ class NowPlayingAction extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    if (
-      this.foobarCurrentPlayback.columns &&
-      this.foobarCurrentPlayback.columns.length > 0
-    ) {
+    if (this.foobarCurrentPlayback.playbackState === "stopped") {
+      websocketUtils.setTitle(this.context, "\nStopped");
     } else {
       foobar.getCurrentPlaybackInfo(
-        this.foobarCurrentPlayback.playlistId,
-        this.foobarCurrentPlayback.index,
+        this.foobarCurrentPlayback.activeItem.playlistId,
+        this.foobarCurrentPlayback.activeItem.index,
         (success, message) => {
           if (!success) {
             websocketUtils.showAlert(this.context);

@@ -27,6 +27,10 @@ const updateCurrentVolumeActions = (player) => {
 
 const updateCurrentPlaying = (player) => {
   contexts.nowPlayingAction.forEach((context) => {
+    if (player.playbackState === "stopped") {
+      websocketUtils.setTitle(context, "\nStopped");
+      return;
+    }
     player.activeItem.columns.length > 0 &&
       websocketUtils.setTitle(
         context,
