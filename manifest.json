@@ -146,7 +146,7 @@
   "Category": "Foobar2000",
   "CategoryIcon": "images/plugin/category",
   "PropertyInspectorPath": "pi/index.html",
-  "Version": "1.3",
+  "Version": "1.4",
   "OS": [
     {
       "Platform": "mac",
