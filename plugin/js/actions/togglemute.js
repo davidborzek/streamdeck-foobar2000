@@ -25,9 +25,13 @@ class ToggleMuteAction extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    websocketUtils.setState(
-      this.context,
-      this.foobarMuteState ? MuteState.muted : MuteState.unmuted
-    );
+    if (this.foobarMuteState) {
+      websocketUtils.setState(
+        this.context,
+        this.foobarMuteState ? MuteState.muted : MuteState.unmuted
+      );
+    } else {
+      websocketUtils.showAlert(this.context);
+    }
   };
 }

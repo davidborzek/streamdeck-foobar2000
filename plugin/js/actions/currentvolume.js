@@ -6,9 +6,13 @@ class CurrentVolumeAction extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    websocketUtils.setTitle(
-      this.context,
-      `${Math.ceil(100 + this.foobarCurrentVolume)}`
-    );
+    if (this.foobarCurrentVolume) {
+      websocketUtils.setTitle(
+        this.context,
+        `${Math.ceil(100 + this.foobarCurrentVolume)}`
+      );
+    } else {
+      websocketUtils.showAlert(this.context);
+    }
   };
 }

@@ -39,9 +39,13 @@ class PlayPauseAction extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    websocketUtils.setState(
-      this.context,
-      PlaybackState[this.foobarPlaybackState]
-    );
+    if (this.foobarPlaybackState) {
+      websocketUtils.setState(
+        this.context,
+        PlaybackState[this.foobarPlaybackState]
+      );
+    } else {
+      websocketUtils.showAlert(this.context);
+    }
   };
 }
