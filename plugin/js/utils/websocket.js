@@ -50,12 +50,24 @@ const websocketUtils = {
   },
   showAlert: (context) => {
     if (websocket) {
-      var json = {
+      const data = {
         event: "showAlert",
         context,
       };
 
-      websocket.send(JSON.stringify(json));
+      websocket.send(JSON.stringify(data));
+    }
+  },
+  log: (message) => {
+    if (websocket) {
+      const data = {
+        event: "logMessage",
+        payload: {
+          message,
+        },
+      };
+
+      websocket.send(JSON.stringify(data));
     }
   },
 };

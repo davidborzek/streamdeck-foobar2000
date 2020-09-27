@@ -5,7 +5,9 @@ class SkipForwardAction extends Action {
     foobar.skipForward((success, message) => {
       if (!success) {
         websocketUtils.showAlert(this.context);
-        console.log(message);
+        websocketUtils.log(
+          "Error to skip forward, check if foobar is running!"
+        );
       }
     });
   };

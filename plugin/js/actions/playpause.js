@@ -11,13 +11,14 @@ class PlayPauseAction extends Action {
   };
 
   onKeyDown = (coordinates, state) => {
-    console.log(this.foobarPlaybackState);
     if (this.foobarPlaybackState === "stopped") {
       foobar.playRandom((success, msg) => {
         websocketUtils.setState(this.context, state);
         if (!success) {
           websocketUtils.showAlert(this.context);
-          console.log(msg);
+          websocketUtils.log(
+            "Error to play a random song, check if foobar is running!"
+          );
         }
       });
     } else {
@@ -25,7 +26,9 @@ class PlayPauseAction extends Action {
         websocketUtils.setState(this.context, state);
         if (!success) {
           websocketUtils.showAlert(this.context);
-          console.log(msg);
+          websocketUtils.log(
+            "Error to play or pause, check if foobar is running!"
+          );
         }
       });
     }

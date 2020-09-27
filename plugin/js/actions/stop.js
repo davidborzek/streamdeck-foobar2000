@@ -6,7 +6,9 @@ class StopAction extends Action {
       websocketUtils.setState(this.context, state);
       if (!success) {
         websocketUtils.showAlert(this.context);
-        console.log(message);
+        websocketUtils.log(
+          "Error to stop the playback, check if foobar is running!"
+        );
       }
     });
   };

@@ -15,7 +15,7 @@ class ToggleMuteAction extends Action {
       websocketUtils.setState(this.context, state);
       if (!success) {
         websocketUtils.showAlert(this.context);
-        console.log(message);
+        websocketUtils.log("Error to toggle mute, check if foobar is running!");
       }
     });
   };

@@ -38,3 +38,9 @@ eventSource.onmessage = function ({ data }) {
     updateCurrentVolumeActions(player);
   }
 };
+
+eventSource.onerror = (error) => {
+  websocketUtils.log(
+    "Error to connect with foobar2000, check if foobar is running!"
+  );
+};

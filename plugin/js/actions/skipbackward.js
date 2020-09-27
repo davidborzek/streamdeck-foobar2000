@@ -5,7 +5,9 @@ class SkipBackwardAction extends Action {
     foobar.skipBackward((success, message) => {
       if (!success) {
         websocketUtils.showAlert(this.context);
-        console.log(message);
+        websocketUtils.log(
+          "Error to skip backward, check if foobar is running!"
+        );
       }
     });
   };
