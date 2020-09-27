@@ -7,7 +7,7 @@ class NowPlayingAction extends Action {
 
   onWillAppear = (coordinates) => {
     if (this.foobarCurrentPlayback.playbackState === "stopped") {
-      websocketUtils.setTitle(this.context, "\nStopped");
+      websocketUtils.setTitle(this.context, "Stopped");
     } else {
       foobar.getCurrentPlaybackInfo(
         this.foobarCurrentPlayback.activeItem.playlistId,
@@ -19,8 +19,11 @@ class NowPlayingAction extends Action {
               "Error could not get current playback, check if foobar is running!"
             );
           } else {
-            const title = utils.addLineBreak(`${message[0]} - ${message[1]}`);
-            websocketUtils.setTitle(this.context, title);
+            websocketUtils.setAsyncTitle(
+              `${message[0]} - ${message[1]}`,
+              300,
+              this.context
+            );
           }
         }
       );

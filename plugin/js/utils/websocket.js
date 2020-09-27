@@ -1,3 +1,5 @@
+const intervals = {};
+
 const websocketUtils = {
   registerPlugin: (uuid, event) => {
     if (websocket) {
@@ -43,6 +45,22 @@ const websocketUtils = {
 
       websocket.send(JSON.stringify(data));
     }
+  },
+
+  setAsyncTitle: (text, interval, context) => {
+    text = ` ${text} `;
+    let currentFirstChar = 0;
+
+    intervals[context] = setInterval(() => {
+      if (currentFirstChar + 8 > text.length) {
+        currentFirstChar = 0;
+      }
+      websocketUtils.setTitle(
+        context,
+        text.substring(currentFirstChar, currentFirstChar + 8)
+      );
+      currentFirstChar++;
+    }, interval);
   },
 
   setSettings: (context, settings) => {

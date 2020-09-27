@@ -27,14 +27,16 @@ const updateCurrentVolumeActions = (player) => {
 
 const updateCurrentPlaying = (player) => {
   contexts.nowPlayingAction.forEach((context) => {
+    intervals[context] && clearInterval(intervals[context]);
     if (player.playbackState === "stopped") {
-      websocketUtils.setTitle(context, "\nStopped");
+      websocketUtils.setTitle(context, "Stopped");
       return;
     }
     player.activeItem.columns.length > 0 &&
-      websocketUtils.setTitle(
-        context,
-        utils.addLineBreak(player.activeItem.columns[0].replace("-", " - "))
+      websocketUtils.setAsyncTitle(
+        player.activeItem.columns[0].replace("-", " - "),
+        300,
+        context
       );
   });
 };
