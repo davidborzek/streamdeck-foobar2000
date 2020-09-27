@@ -6,7 +6,7 @@ class CurrentVolumeAction extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    if (this.foobarCurrentVolume) {
+    if (this.foobarCurrentVolume > -100) {
       websocketUtils.setTitle(
         this.context,
         `${Math.ceil(100 + this.foobarCurrentVolume)}`
