@@ -1,5 +1,5 @@
 {
-  "Description": "Control a foobar2000 instance.",
+  "Description": "A foobar2000 integration to control your music playback with real-time feedback. The beefweb foobar200 plugin is required.",
   "Name": "Foobar2000",
   "com.davidborzek.foobar2000.action": {
     "Name": "Play / pause",

@@ -1,5 +1,5 @@
 {
-  "Description": "Steuere Foobar2000.",
+  "Description": "Eine foobar2000 Integration zum steuern deiner Musikwiedergabe mit Feedback in Echtzeit. Das foobar2000 Plugin beefweb muss installiert sein.",
   "Name": "Foobar2000",
   "com.davidborzek.foobar2000.action": {
     "Name": "Play / pause",
