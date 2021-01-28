@@ -54,10 +54,41 @@ const connectElgatoStreamDeckSocket = (
     };
   }
 
+  const hostInput = document.getElementById("foobar-ip").children[1];
+  hostInput.value = globalSettings.host || "localhost";
+
+  hostInput.onchange = (evt) => {
+    if (
+      evt.target.value === "" ||
+      evt.target.value.toLowerCase() === "localhost"
+    ) {
+      hostInput.value = "localhost";
+      globalSettings.host = "localhost";
+    } else {
+      const blocks = evt.target.value.split(".");
+
+      if (blocks.length === 4) {
+        globalSettings.host = evt.target.value;
+        blocks.forEach((block) => {
+          if (block < 0 || block > 255) {
+            hostInput.value = "localhost";
+            globalSettings.host = "localhost";
+          }
+        });
+      } else {
+        hostInput.value = "localhost";
+        globalSettings.host = "localhost";
+      }
+    }
+
+    websocketUtils.saveGlobalSettings(inUUID, globalSettings);
+  };
+
   websocket.onmessage = (evt) => {
     const { event, payload } = JSON.parse(evt.data);
     if (event == "didReceiveGlobalSettings") {
       globalSettings = payload.settings;
+      hostInput.value = globalSettings.host || "localhost";
     } else if (event == "didReceiveSettings") {
       settings = payload.settings;
     }
