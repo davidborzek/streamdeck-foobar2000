@@ -147,7 +147,7 @@
   "Category": "Foobar2000",
   "CategoryIcon": "images/plugin/category",
   "PropertyInspectorPath": "pi/index.html",
-  "Version": "1.4",
+  "Version": "1.4.1",
   "OS": [
     {
       "Platform": "windows",
