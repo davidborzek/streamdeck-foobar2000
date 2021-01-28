@@ -143,6 +143,7 @@
   "Description": "A foobar2000 integration to control your music playback with real-time feedback. The beefweb foobar200 plugin is required.",
   "Name": "Foobar2000",
   "Icon": "images/plugin/plugin",
+  "URL": "https://github.com/davidborzek/streamdeck-foobar2000",
   "Category": "Foobar2000",
   "CategoryIcon": "images/plugin/category",
   "PropertyInspectorPath": "pi/index.html",
