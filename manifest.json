@@ -15,7 +15,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Toggle play / pause.",
       "UUID": "com.davidborzek.foobar2000.playpause"
     },
@@ -34,7 +34,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Toggle mute.",
       "UUID": "com.davidborzek.foobar2000.togglemute"
     },
@@ -62,7 +62,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Skip to the next song.",
       "UUID": "com.davidborzek.foobar2000.skipforward"
     },
@@ -76,7 +76,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Skip to the previous song.",
       "UUID": "com.davidborzek.foobar2000.skipbackward"
     },
@@ -90,7 +90,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Turn the volume up.",
       "UUID": "com.davidborzek.foobar2000.volumeup"
     },
@@ -104,7 +104,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Turn the volume down.",
       "UUID": "com.davidborzek.foobar2000.volumedown"
     },
@@ -118,7 +118,7 @@
           "FontSize": "16"
         }
       ],
-      "SupportedInMultiActions": false,
+      "SupportedInMultiActions": true,
       "Tooltip": "Stops the playback.",
       "UUID": "com.davidborzek.foobar2000.stop"
     },
