@@ -54,6 +54,13 @@ const connectElgatoStreamDeckSocket = (
     };
   }
 
+  const gettingStartedLink = document.getElementById("getting-started-link");
+  gettingStartedLink.onclick = () => {
+    websocketUtils.openUrl(
+      "https://github.com/davidborzek/streamdeck-foobar2000/blob/master/docs/getting-started.md"
+    );
+  };
+
   websocket.onmessage = (evt) => {
     const { event, payload } = JSON.parse(evt.data);
     if (event == "didReceiveGlobalSettings") {

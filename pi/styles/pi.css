@@ -46,3 +46,13 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+#getting-started-link {
+  cursor: pointer;
+  color: red;
+}
+
+#general-info {
+  margin-top: 25px;
+  margin-left: 10px;
+}

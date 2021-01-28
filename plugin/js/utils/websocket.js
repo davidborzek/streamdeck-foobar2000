@@ -109,4 +109,16 @@ const websocketUtils = {
       websocket.send(JSON.stringify(data));
     }
   },
+  openUrl: (url) => {
+    if (websocket) {
+      const data = {
+        event: "openUrl",
+        payload: {
+          url,
+        },
+      };
+
+      websocket.send(JSON.stringify(data));
+    }
+  },
 };
