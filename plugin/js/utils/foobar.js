@@ -1,7 +1,9 @@
 const foobar = {
   baseUrl: "http://localhost:8880/api",
   getPlayerState: async () => {
-    const response = await axios.get(`${foobar.baseUrl}/player`);
+    const response = await axios.get(
+      `${foobar.baseUrl}/player?columns=%25artist%25,%25title%25`
+    );
     return response.data.player;
   },
   togglePlayPause: async (callback) => {
@@ -87,22 +89,6 @@ const foobar = {
         }
       );
       callback(response.status >= 200, response.data);
-    } catch (e) {
-      callback(false, e);
-    }
-  },
-  getCurrentPlaybackInfo: async (playlistId, itemIndex, callback) => {
-    try {
-      const response = await axios.get(
-        `${foobar.baseUrl}/playlists/${playlistId}/items/${itemIndex}%3A1?columns=%25artist%25,%25title%25`,
-        {
-          timeout: 500,
-        }
-      );
-      callback(
-        response.status >= 200,
-        response.data.playlistItems.items[0].columns
-      );
     } catch (e) {
       callback(false, e);
     }
