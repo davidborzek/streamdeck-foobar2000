@@ -150,10 +150,6 @@
   "Version": "1.4",
   "OS": [
     {
-      "Platform": "mac",
-      "MinimumVersion": "10.11"
-    },
-    {
       "Platform": "windows",
       "MinimumVersion": "10"
     }
