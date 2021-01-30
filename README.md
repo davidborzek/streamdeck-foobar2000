@@ -1,16 +1,26 @@
-# Streamdeck Foobar2000 integration
+# foobar2000 Stream Deck integration
 
-Control Foobar2000 with real-time feedback on your Elgato Stream Deck device.
+> Control foobar2000 with real-time feedback on your Elgato Stream Deck device. \
+> \
+> Now in the Stream Deck Store.
+
+<br>
 
 ![screenshot](images/docs/screenshot.PNG)
 
+<br>
+
+## Installation
+
+Download the plugin from the [releases](https://github.com/davidborzek/streamdeck-foobar2000/releases) or from the Stream Deck Store.
+
+For further instructions follow the [Getting started](docs/getting-started.md) page.
+
 ## Requirements
 
-Installed Foobar2000 with the [beefweb](https://www.foobar2000.org/components/view/foo_beefweb) plugin.
+Installed foobar2000 with the [beefweb](https://www.foobar2000.org/components/view/foo_beefweb) plugin.
 
----
-
-## Functions
+## Features
 
 - Mute and unmute the volume of foobar2000
 - Toggle play and pause (plays a random song when stopped)
@@ -22,8 +32,14 @@ Installed Foobar2000 with the [beefweb](https://www.foobar2000.org/components/vi
 
 The status of the keys gets also updated on external controls (like the foobar2000 window).
 
----
+## Contributing
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feat/fooBar`)
+3. Commit your changes (`git commit -am 'feat: Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
 
 ## Credits
 
-- Uses the [beefweb](https://github.com/hyperblast/beefweb) plugin to control foobar2000
+- [beefweb](https://github.com/hyperblast/beefweb) plugin to control foobar2000
