@@ -82,6 +82,11 @@ const connectElgatoStreamDeckSocket = (
           actions[key].onWillAppear && actions[key].onWillAppear(coordinates);
         }
       });
+    } else if (event === "willDisappear") {
+      Object.keys(intervals).forEach((key) => {
+        clearInterval(intervals[key]);
+      });
+      intervals = {};
     }
   };
 

@@ -1,4 +1,4 @@
-const intervals = {};
+let intervals = {};
 
 const websocketUtils = {
   registerPlugin: (uuid, event) => {
