@@ -5,7 +5,10 @@ branches:
 before_install:
   - mkdir source
   - mv *[^source]* source
+  - mv source com.davidborzek.foobar2000.sdPlugin
+  - mkdir build
   - wget https://developer.elgato.com/documentation/stream-deck/distributiontool/DistributionToolMac.zip
   - unzip DistributionToolMac.zip
 script:
-  - ls -a
+  - ./DistributionTool -b -i com.davidborzek.foobar2000.sdPlugin -o ./build
+  - ls build
