@@ -3,7 +3,9 @@ branches:
   only:
     - chore/ci
 before_install:
+  - mkdir source
+  - mv *[^source]* source
   - wget https://developer.elgato.com/documentation/stream-deck/distributiontool/DistributionToolMac.zip
   - unzip DistributionToolMac.zip
 script:
-  - ls
+  - ls -a
