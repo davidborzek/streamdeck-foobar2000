@@ -1,0 +1,9 @@
+os: osx
+branches:
+  only:
+    - chore/ci
+before_install:
+  - wget https://developer.elgato.com/documentation/stream-deck/distributiontool/DistributionToolMac.zip
+  - unzip DistributionToolMac.zip
+script:
+  - ls
