@@ -25,19 +25,25 @@ const updateCurrentVolumeActions = (player) => {
   });
 };
 
+let currentPlaying = "";
+
 const updateCurrentPlaying = (player) => {
   contexts.nowPlayingAction.forEach((context) => {
-    intervals[context] && clearInterval(intervals[context]);
     if (player.playbackState === "stopped") {
+      intervals[context] && clearInterval(intervals[context]);
       websocketUtils.setTitle(context, "Stopped");
       return;
     }
-    player.activeItem.columns.length > 0 &&
-      websocketUtils.setAsyncTitle(
-        player.activeItem.columns[0].replace("-", " - "),
-        300,
-        context
-      );
+    if (player.activeItem.columns[0] !== currentPlaying) {
+      intervals[context] && clearInterval(intervals[context]);
+      player.activeItem.columns.length > 0 &&
+        websocketUtils.setAsyncTitle(
+          player.activeItem.columns[0].replace("-", " - "),
+          300,
+          context
+        );
+      currentPlaying = player.activeItem.columns[0];
+    }
   });
 };
 

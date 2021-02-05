@@ -43,10 +43,20 @@ div.pi-prop-label {
 .pi-prop {
   flex-direction: row;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#getting-started-link {
+  cursor: pointer;
+  color: red;
+}
+
+#general-info {
+  margin-left: 10px;
 }

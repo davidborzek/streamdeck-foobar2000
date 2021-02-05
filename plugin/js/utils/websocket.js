@@ -1,4 +1,4 @@
-const intervals = {};
+let intervals = {};
 
 const websocketUtils = {
   registerPlugin: (uuid, event) => {
@@ -113,6 +113,18 @@ const websocketUtils = {
         event: "logMessage",
         payload: {
           message,
+        },
+      };
+
+      websocket.send(JSON.stringify(data));
+    }
+  },
+  openUrl: (url) => {
+    if (websocket) {
+      const data = {
+        event: "openUrl",
+        payload: {
+          url,
         },
       };
 
