@@ -1,7 +1,7 @@
 os: osx
 branches:
   only:
-    - chore/ci
+    - master
 before_install:
   - mkdir source
   - mv *[^source]* source
@@ -12,3 +12,11 @@ before_install:
 script:
   - ./DistributionTool -b -i com.davidborzek.foobar2000.sdPlugin -o ./build
   - ls build
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_KEY
+  file: "build/com.davidborzek.foobar2000.streamDeckPlugin"
+  skip_cleanup: true
+  on:
+    tags: true
