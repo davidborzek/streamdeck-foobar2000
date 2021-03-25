@@ -20,6 +20,34 @@
       "UUID": "com.davidborzek.foobar2000.playpause"
     },
     {
+      "Icon": "images/actions/play/play",
+      "Name": "Play",
+      "States": [
+        {
+          "Image": "images/keys/play/play",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Trigger play",
+      "UUID": "com.davidborzek.foobar2000.play"
+    },
+    {
+      "Icon": "images/actions/pause/pause",
+      "Name": "Pause",
+      "States": [
+        {
+          "Image": "images/keys/pause/pause",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Trigger pause",
+      "UUID": "com.davidborzek.foobar2000.pause"
+    },
+    {
       "Icon": "images/actions/toggleMute/toggleMute",
       "Name": "Toggle mute",
       "States": [

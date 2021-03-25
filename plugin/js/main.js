@@ -3,6 +3,8 @@ let pluginUUID = null;
 
 let actions = {
   playPauseAction: new PlayPauseAction(),
+  playAction: new PlayAction(),
+  pauseAction: new PauseAction(),
   toggleMuteAction: new ToggleMuteAction(),
   currentVolumeAction: new CurrentVolumeAction(),
   skipForwardAction: new SkipForwardAction(),

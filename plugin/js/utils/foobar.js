@@ -19,6 +19,26 @@ const foobar = {
       callback(false, e);
     }
   },
+  triggerPlay: async (callback) => {
+    try {
+      const response = await axios.post(`${foobar.baseUrl}/player/play`, {
+        timeout: 500,
+      });
+      callback(response.status >= 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
+  triggerPause: async (callback) => {
+    try {
+      const response = await axios.post(`${foobar.baseUrl}/player/pause`, {
+        timeout: 500,
+      });
+      callback(response.status >= 200, response.data);
+    } catch (e) {
+      callback(false, e);
+    }
+  },
   setMuteStatus: async (muted, callback) => {
     try {
       const response = await axios.post(
