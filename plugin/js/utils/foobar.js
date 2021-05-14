@@ -113,4 +113,20 @@ const foobar = {
       callback(false, e);
     }
   },
+  getCurrentArtwork: async (playlistId, index) => {
+    const data = await new Promise(resolve => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 144;
+      canvas.height = 144;
+      const ctx = canvas.getContext("2d");
+  
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, 144, 144);
+        resolve(canvas.toDataURL());
+      };
+      img.src = `${foobar.baseUrl}/artwork/${playlistId}/${index}`;
+    })
+    return data;
+  },
 };
