@@ -23,6 +23,7 @@ let contexts = {
 };
 
 let foobarPlayerState;
+let foobarPlayerArtwork;
 
 const connectElgatoStreamDeckSocket = (
   inPort,
@@ -37,6 +38,7 @@ const connectElgatoStreamDeckSocket = (
   websocket.onopen = async () => {
     try {
       foobarPlayerState = await foobar.getPlayerState();
+      foobarPlayerArtwork = await foobar.getCurrentArtwork(foobarPlayerState.activeItem.playlistIndex, foobarPlayerState.activeItem.index);
     } catch {
       websocketUtils.log(
         "Error to connect with foobar2000, check if foobar is running!"
@@ -50,14 +52,12 @@ const connectElgatoStreamDeckSocket = (
     const { settings, coordinates } = payload || {};
 
     if (foobarPlayerState) {
-      actions.currentVolumeAction.setCurrentVolume(
-        foobarPlayerState.volume.value
-      );
+      actions.currentVolumeAction.setCurrentVolume(foobarPlayerState.volume.value);
       actions.playPauseAction.setPlaybackState(foobarPlayerState.playbackState);
       actions.toggleMuteAction.setMuteStatus(foobarPlayerState.volume.isMuted);
       actions.volumeUpAction.setVolume(foobarPlayerState.volume.value);
       actions.volumeDownAction.setVolume(foobarPlayerState.volume.value);
-      actions.nowPlayingAction.setCurrentPlayback(foobarPlayerState);
+      actions.nowPlayingAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
     }
 
     Object.keys(actions).forEach((key) => {
