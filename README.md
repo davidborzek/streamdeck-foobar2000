@@ -29,6 +29,7 @@ Installed foobar2000 with the [beefweb](https://www.foobar2000.org/components/vi
 - Skip forward / backward
 - Stop playback
 - Display the current playback (artist & album) as ticker on a key
+- Display artwork
 
 The status of the keys gets also updated on external controls (like the foobar2000 window).
 
