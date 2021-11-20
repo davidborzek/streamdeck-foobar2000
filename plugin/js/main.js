@@ -38,7 +38,12 @@ const connectElgatoStreamDeckSocket = (
   websocket.onopen = async () => {
     try {
       foobarPlayerState = await foobar.getPlayerState();
-      foobarPlayerArtwork = await foobar.getCurrentArtwork(foobarPlayerState.activeItem.playlistIndex, foobarPlayerState.activeItem.index);
+
+      const { activeItem: { playlistIndex, index } } = foobarPlayerState;
+
+      if (playlistIndex > -1 && index > -1) {
+        foobarPlayerArtwork = await foobar.getCurrentArtwork(playlistIndex, index);
+      }
     } catch {
       websocketUtils.log(
         "Error to connect with foobar2000, check if foobar is running!"
