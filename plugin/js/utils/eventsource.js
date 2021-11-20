@@ -27,8 +27,6 @@ const updateCurrentVolumeActions = (player) => {
 
 let currentPlayingArtist = "";
 let currentPlayingTitle = "";
-let currentIndex = 0
-let currentPLIndex = 0
 
 const updateCurrentPlaying = (player) => {
   contexts.nowPlayingAction.forEach((context) => {
@@ -37,7 +35,10 @@ const updateCurrentPlaying = (player) => {
       websocketUtils.setTitle(context, "Stopped");
       return;
     }
-    if (player.activeItem.columns[0] !== currentPlayingArtist || player.activeItem.columns[1] !== currentPlayingTitle) {
+    if (
+      player.activeItem.columns[0] !== currentPlayingArtist ||
+      player.activeItem.columns[1] !== currentPlayingTitle
+    ) {
       intervals[context] && clearInterval(intervals[context]);
       player.activeItem.columns.length > 0 &&
         websocketUtils.setAsyncTitleMultiline(
@@ -46,20 +47,18 @@ const updateCurrentPlaying = (player) => {
           300,
           context
         );
+
+      foobar
+        .getCurrentArtwork(
+          player.activeItem.playlistIndex,
+          player.activeItem.index
+        )
+        .then((res) => {
+          websocketUtils.setImage(context, res);
+        });
       currentPlayingArtist = player.activeItem.columns[0];
       currentPlayingTitle = player.activeItem.columns[1];
     }
-    if(player.activeItem.playlistIndex !== currentPLIndex || player.activeItem.index !== currentIndex) {
-      currentPLIndex = player.activeItem.playlistIndex;
-      currentIndex = player.activeItem.index;
-      foobar.getCurrentArtwork(player.activeItem.playlistIndex, player.activeItem.index).then(res=>{
-        websocketUtils.setImage(
-          context,
-          res
-        )
-      })
-    }
-
   });
 };
 
