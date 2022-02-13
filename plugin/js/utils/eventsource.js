@@ -87,6 +87,9 @@ eventSource.onmessage = function ({ data }) {
   const { player } = JSON.parse(data);
   if (player) {
     foobarPlayerState = player;
+    if(typeof contexts === typeof undefined){
+      return;
+    }
     updatePlayPauseActions(player);
     updateToggleMuteActions(player);
     updateCurrentVolumeActions(player);
