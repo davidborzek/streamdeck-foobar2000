@@ -10,6 +10,7 @@ class NowPlayingAction extends Action {
     if (this.foobarCurrentPlayback.playbackState === "stopped") {
       websocketUtils.setTitle(this.context, "Stopped");
     } else {
+      intervals[this.context] && clearInterval(intervals[this.context]);
       websocketUtils.setAsyncTitleMultiline(
         this.foobarCurrentPlayback.activeItem.columns[1],
         this.foobarCurrentPlayback.activeItem.columns[0],
