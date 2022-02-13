@@ -54,6 +54,7 @@ const updateCurrentPlaying = (player) => {
           player.activeItem.index
         )
         .then((res) => {
+          foobarPlayerArtwork = res;
           websocketUtils.setImage(context, res);
         });
       currentPlayingArtist = player.activeItem.columns[0];
