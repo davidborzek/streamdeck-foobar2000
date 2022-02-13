@@ -61,10 +61,10 @@ const updateCurrentPlaying = (player) => {
           foobarPlayerArtwork = res;
           websocketUtils.setImage(context, res);
         });
-      currentPlayingArtist = player.activeItem.columns[0];
-      currentPlayingTitle = player.activeItem.columns[1];
     }
   });
+  currentPlayingArtist = player.activeItem.columns[0];
+  currentPlayingTitle = player.activeItem.columns[1];
 };
 
 const parameters = {
