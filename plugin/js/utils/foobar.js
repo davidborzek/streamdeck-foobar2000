@@ -125,6 +125,9 @@ const foobar = {
         ctx.drawImage(img, 0, 0, 144, 144);
         resolve(canvas.toDataURL());
       };
+      img.onerror = function() {
+        resolve(canvas.toDataURL());
+      };
       img.src = `${foobar.baseUrl}/artwork/${playlistId}/${index}?${Date.now()}`;
     })
     return data;
