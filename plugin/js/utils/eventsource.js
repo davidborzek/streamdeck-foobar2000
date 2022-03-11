@@ -29,6 +29,10 @@ let currentPlayingArtist = "";
 let currentPlayingTitle = "";
 
 const updateCurrentPlaying = (player) => {
+  if (player.activeItem.playlistIndex === -1 || player.activeItem.index === -1) {
+    return;
+  }
+
   contexts.nowPlayingAction.forEach((context) => {
     if (player.playbackState === "stopped") {
       intervals[context] && clearInterval(intervals[context]);
@@ -54,12 +58,13 @@ const updateCurrentPlaying = (player) => {
           player.activeItem.index
         )
         .then((res) => {
+          foobarPlayerArtwork = res;
           websocketUtils.setImage(context, res);
         });
-      currentPlayingArtist = player.activeItem.columns[0];
-      currentPlayingTitle = player.activeItem.columns[1];
     }
   });
+  currentPlayingArtist = player.activeItem.columns[0];
+  currentPlayingTitle = player.activeItem.columns[1];
 };
 
 const parameters = {
@@ -82,6 +87,9 @@ eventSource.onmessage = function ({ data }) {
   const { player } = JSON.parse(data);
   if (player) {
     foobarPlayerState = player;
+    if(typeof contexts === typeof undefined){
+      return;
+    }
     updatePlayPauseActions(player);
     updateToggleMuteActions(player);
     updateCurrentVolumeActions(player);
