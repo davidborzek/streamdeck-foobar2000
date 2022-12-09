@@ -13,7 +13,7 @@ let actions = {
   volumeDownAction: new VolumeDownAction(),
   stopAction: new StopAction(),
   nowPlayingAction: new NowPlayingAction(),
-  center: new Center(),
+  centerAction: new Center(),
 };
 
 let contexts = {
@@ -65,13 +65,10 @@ const connectElgatoStreamDeckSocket = (
       actions.volumeUpAction.setVolume(foobarPlayerState.volume.value);
       actions.volumeDownAction.setVolume(foobarPlayerState.volume.value);
       actions.nowPlayingAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
-      actions.center.setVolume(foobarPlayerState.volume.value);
-      actions.center.setPlaybackState(foobarPlayerState.playbackState);
-      actions.center.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
+      actions.centerAction.setVolume(foobarPlayerState.volume.value);
+      actions.centerAction.setPlaybackState(foobarPlayerState.playbackState);
+      actions.centerAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
     }
-
-    console.log(websocket)
-
 
     Object.keys(actions).forEach((key) => {
       if (actions[key].type === action) {

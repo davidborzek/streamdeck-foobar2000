@@ -28,6 +28,40 @@ const updateCurrentVolumeActions = (player) => {
 let currentPlayingArtist = "";
 let currentPlayingTitle = "";
 
+const updateCenterActions = (player) => {
+  if (player.activeItem.playlistIndex === -1 || player.activeItem.index === -1) {
+    return;
+  }
+
+  contexts.centerAction.forEach((context) => {
+    if (player.playbackState === "stopped") {
+      intervals[context] && clearInterval(intervals[context]);
+      websocketUtils.setTitle(context, "Stopped");
+      return;
+    }
+
+    intervals[context] && clearInterval(intervals[context]);
+    player.activeItem.columns.length > 0 &&
+      websocketUtils.setAsyncTitleMultiline(
+        player.activeItem.columns[1],
+        player.activeItem.columns[0],
+        300,
+        context
+      );
+
+    foobar
+      .getCurrentArtwork(
+        player.activeItem.playlistIndex,
+        player.activeItem.index
+      )
+      .then((res) => {
+        foobarPlayerArtwork = res;
+        websocketUtils.setImage(context, res);
+        websocketUtils.setFeedback(context, res, player.activeItem.columns[0], player.activeItem.columns[1])
+      });
+  });
+}
+
 const updateCurrentPlaying = (player) => {
   if (player.activeItem.playlistIndex === -1 || player.activeItem.index === -1) {
     return;
@@ -67,6 +101,8 @@ const updateCurrentPlaying = (player) => {
   currentPlayingTitle = player.activeItem.columns[1];
 };
 
+
+
 const parameters = {
   player: "true",
   trcolumns: "%artist%,%title%,%artist%-%album%-%title%",
@@ -87,13 +123,14 @@ eventSource.onmessage = function ({ data }) {
   const { player } = JSON.parse(data);
   if (player) {
     foobarPlayerState = player;
-    if(typeof contexts === typeof undefined){
+    if (typeof contexts === typeof undefined) {
       return;
     }
     updatePlayPauseActions(player);
     updateToggleMuteActions(player);
     updateCurrentVolumeActions(player);
     updateCurrentPlaying(player);
+    updateCenterActions(player);
   }
 };
 
