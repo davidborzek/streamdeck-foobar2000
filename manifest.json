@@ -1,14 +1,14 @@
 {
   "Actions": [
     {
-      "Icon": "images/actions/nowPlaying/nowPlaying",
+      "Icon": "images/plugin/category",
       "Name": "Center",
       "Controllers": [
         "Encoder"
       ],
       "Encoder": {
         "StackColor": "#231F20",
-        "Icon": "images/actions/nowPlaying/nowPlaying",
+        "Icon": "images/plugin/category",
         "layout": "$B1",
         "TriggerDescription": {
             "Rotate": "Volume",

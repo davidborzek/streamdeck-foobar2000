@@ -152,7 +152,7 @@ const websocketUtils = {
     }
   },
 
-  setFeedback: (context, icon, title, value) => {
+  setFeedback: (context, icon, title, value, indicator) => {
     if (websocket) {
       const data = {
         event: "setFeedback",
@@ -160,6 +160,7 @@ const websocketUtils = {
         payload: {
           'title' : title,
           'value' : value,
+          'indicator' : indicator,
           icon
         },
       };

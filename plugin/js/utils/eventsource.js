@@ -49,6 +49,8 @@ const updateCenterActions = (player) => {
         context
       );
 
+    console.log(player)
+
     foobar
       .getCurrentArtwork(
         player.activeItem.playlistIndex,
@@ -57,7 +59,7 @@ const updateCenterActions = (player) => {
       .then((res) => {
         foobarPlayerArtwork = res;
         websocketUtils.setImage(context, res);
-        websocketUtils.setFeedback(context, res, player.activeItem.columns[0], player.activeItem.columns[1])
+        websocketUtils.setFeedback(context, res, player.activeItem.columns[1], player.activeItem.columns[0], player.volume.value + 100)
       });
   });
 }

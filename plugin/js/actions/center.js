@@ -14,6 +14,13 @@ class Center extends Action {
     this.currentArtwork = image;
   };
 
+  setCurrentVolume = (volume) => {
+    this.foobarCurrentVolume = volume;
+    console.log("in center")
+    console.log(this.foobarCurrentVolume)
+  };
+
+
   onDialRotate = (state, payload) => {
 
     const volumeStep = this.settings.volumeStep || 1;
@@ -86,8 +93,9 @@ class Center extends Action {
       websocketUtils.setFeedback(
         this.context,
         this.currentArtwork,
-        this.foobarCurrentPlayback.activeItem.columns[0],
         this.foobarCurrentPlayback.activeItem.columns[1],
+        this.foobarCurrentPlayback.activeItem.columns[0],
+        this.foobarCurrentVolume + 100,
       )
     }
 

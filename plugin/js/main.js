@@ -68,6 +68,7 @@ const connectElgatoStreamDeckSocket = (
       actions.centerAction.setVolume(foobarPlayerState.volume.value);
       actions.centerAction.setPlaybackState(foobarPlayerState.playbackState);
       actions.centerAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
+      actions.centerAction.setCurrentVolume(foobarPlayerState.volume.value);
     }
 
     Object.keys(actions).forEach((key) => {
