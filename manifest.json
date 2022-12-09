@@ -2,6 +2,38 @@
   "Actions": [
     {
       "Icon": "images/actions/playpause/playpause",
+      "Name": "Center",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "StackColor": "#231F20",
+        "Icon": "images/actions/playpause/playpause",
+        "layout": "$B1",
+        "TriggerDescription": {
+            "Rotate": "Volume",
+            "Push": "Play/Pause",
+            "Touch": "Play/Pause",
+            "LongTouch": "Ref"
+        }       
+      },  
+      "States": [
+        {
+          "Image": "images/keys/play/play",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        },
+        {
+          "Image": "images/keys/pause/pause",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "Tooltip": "Toggle play / pause.",
+      "UUID": "com.davidborzek.foobar2000.center"
+    },
+    {
+      "Icon": "images/actions/playpause/playpause",
       "Name": "Play / pause",
       "States": [
         {

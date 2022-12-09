@@ -151,4 +151,20 @@ const websocketUtils = {
       websocket.send(JSON.stringify(data));
     }
   },
+
+  setFeedback: (context, icon, title, value) => {
+    console.log("called");
+    if (websocket) {
+      const data = {
+        event: "setFeedback",
+        context,
+        payload: {
+          'title' : title,
+          'value' : value,
+          icon
+        },
+      };
+      websocket.send(JSON.stringify(data));
+    }
+  },
 };

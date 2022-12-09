@@ -13,6 +13,7 @@ let actions = {
   volumeDownAction: new VolumeDownAction(),
   stopAction: new StopAction(),
   nowPlayingAction: new NowPlayingAction(),
+  center: new Center(),
 };
 
 let contexts = {
@@ -20,6 +21,7 @@ let contexts = {
   toggleMuteAction: [],
   currentVolumeAction: [],
   nowPlayingAction: [],
+  centerAction: [],
 };
 
 let foobarPlayerState;
@@ -63,7 +65,13 @@ const connectElgatoStreamDeckSocket = (
       actions.volumeUpAction.setVolume(foobarPlayerState.volume.value);
       actions.volumeDownAction.setVolume(foobarPlayerState.volume.value);
       actions.nowPlayingAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
+      actions.center.setVolume(foobarPlayerState.volume.value);
+      actions.center.setPlaybackState(foobarPlayerState.playbackState);
+      actions.center.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
     }
+
+    console.log(websocket)
+
 
     Object.keys(actions).forEach((key) => {
       if (actions[key].type === action) {
@@ -72,13 +80,34 @@ const connectElgatoStreamDeckSocket = (
       }
     });
 
-    if (event === "keyDown" || event === "keyUp") {
+    if (event === "dialRotate") {
+      const { state } = payload;
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action) {
+          actions[key].onDialRotate(state, payload);
+        }
+      });
+    } else if (event === "dialPress") {
+      const { state } = payload;
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action) {
+          actions[key].onDialPress(coordinates, state, payload);
+        }
+      });
+    } else if (event === "touchTap") {
+      const { state } = payload;
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action) {
+          actions[key].onTouchTap(coordinates, state);
+        }
+      });
+    } else if (event === "keyDown" || event === "keyUp") {
       const { state } = payload;
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
           event === "keyDown"
             ? actions[key].onKeyDown &&
-              actions[key].onKeyDown(coordinates, state)
+            actions[key].onKeyDown(coordinates, state)
             : actions[key].onKeyUp && actions[key].onKeyUp(coordinates, state);
         }
       });
