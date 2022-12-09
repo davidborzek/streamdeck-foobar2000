@@ -153,7 +153,6 @@ const websocketUtils = {
   },
 
   setFeedback: (context, icon, title, value) => {
-    console.log("called");
     if (websocket) {
       const data = {
         event: "setFeedback",

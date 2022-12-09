@@ -67,8 +67,6 @@ class Center extends Action {
   };
 
   onWillAppear = (coordinates) => {
-    console.log(this.foobarCurrentPlayback)
-
     if (this.foobarCurrentPlayback.playbackState === "stopped") {
       websocketUtils.setTitle(this.context, "Stopped");
     } else {
