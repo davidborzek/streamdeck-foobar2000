@@ -18,17 +18,12 @@
       },  
       "States": [
         {
-          "Image": "images/keys/play/play",
-          "TitleAlignment": "middle",
-          "FontSize": "16"
-        },
-        {
-          "Image": "images/keys/pause/pause",
+          "Image": "images/plugin/category",
           "TitleAlignment": "middle",
           "FontSize": "16"
         }
       ],
-      "Tooltip": "Toggle play / pause.",
+      "Tooltip": "Volume, play/pause and now playing",
       "UUID": "com.davidborzek.foobar2000.center"
     },
     {
