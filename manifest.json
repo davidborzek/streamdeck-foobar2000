@@ -13,8 +13,7 @@
         "TriggerDescription": {
             "Rotate": "Volume",
             "Push": "Play/Pause",
-            "Touch": "Play/Pause",
-            "LongTouch": "Not implemented :)"
+            "Touch": "Play/Pause"
         }       
       },  
       "States": [

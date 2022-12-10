@@ -49,8 +49,8 @@ const updateCenterActions = (player) => {
         context
       );
 
-    console.log(player)
 
+    let sliderPercent = Math.pow(10, player.volume.value / 20) * 100
     foobar
       .getCurrentArtwork(
         player.activeItem.playlistIndex,
@@ -59,7 +59,7 @@ const updateCenterActions = (player) => {
       .then((res) => {
         foobarPlayerArtwork = res;
         websocketUtils.setImage(context, res);
-        websocketUtils.setFeedback(context, res, player.activeItem.columns[1], player.activeItem.columns[0], player.volume.value + 100)
+        websocketUtils.setFeedback(context, res, player.activeItem.columns[1], player.activeItem.columns[0], sliderPercent)
       });
   });
 }

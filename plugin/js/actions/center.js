@@ -16,8 +16,6 @@ class Center extends Action {
 
   setCurrentVolume = (volume) => {
     this.foobarCurrentVolume = volume;
-    console.log("in center")
-    console.log(this.foobarCurrentVolume)
   };
 
 
@@ -90,12 +88,14 @@ class Center extends Action {
         this.currentArtwork
       )
 
+
+      let sliderPercent = Math.pow(10, this.foobarCurrentVolume / 20) * 100
       websocketUtils.setFeedback(
         this.context,
         this.currentArtwork,
         this.foobarCurrentPlayback.activeItem.columns[1],
         this.foobarCurrentPlayback.activeItem.columns[0],
-        this.foobarCurrentVolume + 100,
+        sliderPercent,
       )
     }
 
