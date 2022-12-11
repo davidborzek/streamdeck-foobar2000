@@ -24,6 +24,8 @@ let contexts = {
   centerAction: [],
 };
 
+let centerSettings = {}  // For evenSource to access and call appropriate functions, is this hacky? 
+
 let foobarPlayerState;
 let foobarPlayerArtwork;
 
@@ -75,10 +77,19 @@ const connectElgatoStreamDeckSocket = (
       if (actions[key].type === action) {
         actions[key].setContext(context);
         actions[key].setSettings(settings);
+        if (action === "com.davidborzek.foobar2000.center" && typeof settings !== 'undefined') {
+          centerSettings[context] = settings
+        }
       }
     });
-
-    if (event === "dialRotate") {
+    
+    if(event === "didReceiveSettings") {
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action && action === "com.davidborzek.foobar2000.center") {
+          actions[key].updateInformation();
+        }
+      });
+    } else if (event === "dialRotate") {
       const { state } = payload;
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {

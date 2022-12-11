@@ -7,6 +7,7 @@ let settings = {};
 const actions = Object.freeze({
   volumeUp: "com.davidborzek.foobar2000.volumeup",
   volumeDown: "com.davidborzek.foobar2000.volumedown",
+  center: "com.davidborzek.foobar2000.center",
 });
 
 const connectElgatoStreamDeckSocket = (
@@ -52,6 +53,59 @@ const connectElgatoStreamDeckSocket = (
         volumeStep: Number.parseInt(volumeStepInput.value, 10),
       });
     };
+  }
+
+  if (action == actions.center) {
+    const volumeStepDiv = document.getElementById("volume-step");
+    volumeStepDiv.style.display = "flex";
+    const dialTurnDiv = document.getElementById("dial-turn");
+    dialTurnDiv.style.display = "flex";
+    const titleInformationDiv = document.getElementById("title-information");
+    titleInformationDiv.style.display = "flex";
+    const valueInformationDiv = document.getElementById("value-information");
+    valueInformationDiv.style.display = "flex";
+    const iconInformationDiv = document.getElementById("icon-information");
+    iconInformationDiv.style.display = "flex";
+
+    const volumeStepInput = volumeStepDiv.children[1];
+    volumeStepInput.value = settings.volumeStep || 1;
+    volumeStepInput.onchange = (evt) => {
+      if (
+        evt.target.value === "" ||
+        Number.parseInt(evt.target.value, 10) < 0
+      ) {
+        volumeStepInput.value = 1;
+      } else if (Number.parseInt(evt.target.value, 10) > 100) {
+        volumeStepInput.value = 100;
+      }
+      websocketUtils.saveSettings(action, inUUID, {
+        volumeStep: Number.parseInt(volumeStepInput.value, 10),
+      });
+    };
+
+    const dialTurnSelection = dialTurnDiv.children[1];
+    dialTurnSelection.value = settings.dialTurnAction || "volume";
+    const titleInformationSelection = titleInformationDiv.children[1];
+    titleInformationSelection.value = settings.titleInformation || "track";
+    const valueInformationSelection = valueInformationDiv.children[1];
+    valueInformationSelection.value = settings.valueInformation || "artist";
+    const iconInformationSelection = iconInformationDiv.children[1];
+    iconInformationSelection.value = settings.iconInformation || "trackArt";
+
+    onchange = (evt) => {
+      websocketUtils.saveSettings(action, inUUID, {
+        volumeStep: Number.parseInt(volumeStepInput.value, 10),
+        dialTurnAction: dialTurnSelection.value,
+        titleInformation: titleInformationSelection.value,
+        valueInformation: valueInformationSelection.value,
+        iconInformation: iconInformationSelection.value
+      });
+    };
+
+    dialTurnSelection.onchange = onchange;
+    titleInformationSelection.onchange = onchange;
+    valueInformationSelection.onchange = onchange;
+    iconInformationSelection.onchange = onchange;
   }
 
   const gettingStartedLink = document.getElementById("getting-started-link");

@@ -33,35 +33,33 @@ const updateCenterActions = (player) => {
     return;
   }
 
-  contexts.centerAction.forEach((context) => {
-    if (player.playbackState === "stopped") {
-      intervals[context] && clearInterval(intervals[context]);
-      websocketUtils.setTitle(context, "Stopped");
-      return;
-    }
+  foobar
+    .getCurrentArtwork(
+      player.activeItem.playlistIndex,
+      player.activeItem.index
+    ).then((res) => {
 
-    intervals[context] && clearInterval(intervals[context]);
-    player.activeItem.columns.length > 0 &&
-      websocketUtils.setAsyncTitleMultiline(
-        player.activeItem.columns[1],
-        player.activeItem.columns[0],
-        300,
-        context
-      );
+      for (idx in contexts.centerAction) {
+        const context = contexts.centerAction[idx]
 
+        //contexts.centerAction.forEach((context) => {
+        if (player.playbackState === "stopped") {
+          intervals[context] && clearInterval(intervals[context]);
+          websocketUtils.setTitle(context, "Stopped");
+          return;
+        }
 
-    let sliderPercent = Math.pow(10, player.volume.value / 20) * 100
-    foobar
-      .getCurrentArtwork(
-        player.activeItem.playlistIndex,
-        player.activeItem.index
-      )
-      .then((res) => {
-        foobarPlayerArtwork = res;
-        websocketUtils.setImage(context, res);
-        websocketUtils.setFeedback(context, res, player.activeItem.columns[1], player.activeItem.columns[0], sliderPercent)
-      });
-  });
+        intervals[context] && clearInterval(intervals[context]);
+
+        actions.centerAction.currentArtwork = res;
+        actions.centerAction.foobarCurrentPlayback = player
+        actions.centerAction.foobarCurrentVolume = player.volume.value
+        actions.centerAction.setContext(context)
+        actions.centerAction.setSettings(centerSettings[context])
+        actions.centerAction.updateInformation()
+        //});
+      }
+    });
 }
 
 const updateCurrentPlaying = (player) => {

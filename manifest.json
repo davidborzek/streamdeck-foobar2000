@@ -11,7 +11,7 @@
         "Icon": "images/plugin/category",
         "layout": "$B1",
         "TriggerDescription": {
-            "Rotate": "Volume",
+            "Rotate": "Volume or Skip",
             "Push": "Play/Pause",
             "Touch": "Play/Pause"
         }       

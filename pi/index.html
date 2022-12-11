@@ -1,25 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>com.davidborzek.foobar2000.pi</title>
-    <link rel="stylesheet" type="text/css" href="styles/pi.css" />
 
-    <script src="../plugin/js/utils/websocket.js"></script>
-    <script src="js/main.js"></script>
-  </head>
-  <body>
-    <!-- Volume step property -->
-    <div class="pi-prop" id="volume-step">
-      <div class="pi-prop-label">
-        <span>Volume</span>
-        <span>step:</span>
-      </div>
-      <input type="number" min="1" max="100" />
-    </div>
+<head>
+  <title>com.davidborzek.foobar2000.pi</title>
+  <link rel="stylesheet" type="text/css" href="styles/pi.css" />
 
-    <div class="pi-prop" id="general-info">
-      For setup insructions follow the
-      <a id="getting-started-link">Getting started</a> page.
+  <script src="../plugin/js/utils/websocket.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+<body>
+  <!-- Volume step property -->
+  <div class="pi-prop" id="volume-step">
+    <div class="pi-prop-label">
+      <span>Volume</span>
+      <span>step:</span>
     </div>
-  </body>
+    <input type="number" min="1" max="100" />
+  </div>
+
+  <div class="pi-prop" id="dial-turn">
+    <div class="pi-prop-label">
+      <span>Dial turn</span>
+      <span>action:</span>
+    </div>
+    <select class="sdpi-item-value select" id="myselect">
+      <option value="volume">Adjust volume</option>
+      <option value="skip">Skip Forward/Back</option>
+    </select>
+  </div>
+
+  <div class="pi-prop" id="title-information">
+    <div class="pi-prop-label">
+      <span>Title</span>
+      <span>information:</span>
+    </div>
+    <select class="sdpi-item-value select" id="myselect">
+      <option value="track">Current track</option>
+      <option value="artist">Artist name</option>
+      <option value="none">None</option>
+    </select>
+  </div>
+
+  <div class="pi-prop" id="value-information">
+    <div class="pi-prop-label">
+      <span>Value</span>
+      <span>information:</span>
+    </div>
+    <select class="sdpi-item-value select" id="myselect">
+      <option value="artist">Artist name</option>
+      <option value="track">Current track</option>
+      <option value="none">None</option>
+    </select>
+  </div>
+
+  <div class="pi-prop" id="icon-information">
+    <div class="pi-prop-label">
+      <span>Icon:</span>
+    </div>
+    <select class="sdpi-item-value select" id="myselect">
+      <option value="trackArt">Current track art</option>
+      <option value="logo">Foobar Logo</option>
+    </select>
+  </div>
+
+  <div class="pi-prop" id="general-info">
+    For setup insructions follow the
+    <a id="getting-started-link">Getting started</a> page.
+  </div>
+
+
+
+</body>
+
 </html>
