@@ -2,7 +2,7 @@
   "Actions": [
     {
       "Icon": "images/plugin/category",
-      "Name": "Center",
+      "Name": "Control Centre",
       "Controllers": [
         "Encoder"
       ],

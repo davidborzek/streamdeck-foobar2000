@@ -103,7 +103,7 @@ class Center extends Action {
 
     const title = this.settings.titleInformation === "track"
       ? this.foobarCurrentPlayback.activeItem.columns[1]
-      : this.settings.titleInformation === "artist" ? this.foobarCurrentPlayback.activeItem.columns[0] : "Center"
+      : this.settings.titleInformation === "artist" ? this.foobarCurrentPlayback.activeItem.columns[0] : "Control Centre"
     const value = this.settings.valueInformation === "track"
       ? this.foobarCurrentPlayback.activeItem.columns[1]
       : this.settings.valueInformation === "artist" ? this.foobarCurrentPlayback.activeItem.columns[0] : ""
