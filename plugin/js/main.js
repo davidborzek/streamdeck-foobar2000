@@ -13,6 +13,7 @@ let actions = {
   volumeDownAction: new VolumeDownAction(),
   stopAction: new StopAction(),
   nowPlayingAction: new NowPlayingAction(),
+  centerAction: new Center(),
 };
 
 let contexts = {
@@ -20,7 +21,10 @@ let contexts = {
   toggleMuteAction: [],
   currentVolumeAction: [],
   nowPlayingAction: [],
+  centerAction: [],
 };
+
+let centerSettings = {}  // For evenSource to access and call appropriate functions, is this hacky? 
 
 let foobarPlayerState;
 let foobarPlayerArtwork;
@@ -63,22 +67,56 @@ const connectElgatoStreamDeckSocket = (
       actions.volumeUpAction.setVolume(foobarPlayerState.volume.value);
       actions.volumeDownAction.setVolume(foobarPlayerState.volume.value);
       actions.nowPlayingAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
+      actions.centerAction.setVolume(foobarPlayerState.volume.value);
+      actions.centerAction.setPlaybackState(foobarPlayerState.playbackState);
+      actions.centerAction.setCurrentPlayback(foobarPlayerState, foobarPlayerArtwork);
+      actions.centerAction.setCurrentVolume(foobarPlayerState.volume.value);
     }
 
     Object.keys(actions).forEach((key) => {
       if (actions[key].type === action) {
         actions[key].setContext(context);
         actions[key].setSettings(settings);
+        if (action === "com.davidborzek.foobar2000.center" && typeof settings !== 'undefined') {
+          centerSettings[context] = settings
+        }
       }
     });
-
-    if (event === "keyDown" || event === "keyUp") {
+    
+    if(event === "didReceiveSettings") {
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action && action === "com.davidborzek.foobar2000.center") {
+          actions[key].updateInformation();
+        }
+      });
+    } else if (event === "dialRotate") {
+      const { state } = payload;
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action) {
+          actions[key].onDialRotate(state, payload);
+        }
+      });
+    } else if (event === "dialPress") {
+      const { state } = payload;
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action) {
+          actions[key].onDialPress(coordinates, state, payload);
+        }
+      });
+    } else if (event === "touchTap") {
+      const { state } = payload;
+      Object.keys(actions).forEach((key) => {
+        if (actions[key].type === action) {
+          actions[key].onTouchTap(coordinates, state);
+        }
+      });
+    } else if (event === "keyDown" || event === "keyUp") {
       const { state } = payload;
       Object.keys(actions).forEach((key) => {
         if (actions[key].type === action) {
           event === "keyDown"
             ? actions[key].onKeyDown &&
-              actions[key].onKeyDown(coordinates, state)
+            actions[key].onKeyDown(coordinates, state)
             : actions[key].onKeyUp && actions[key].onKeyUp(coordinates, state);
         }
       });

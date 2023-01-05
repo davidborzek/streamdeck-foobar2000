@@ -70,8 +70,8 @@ const websocketUtils = {
     let currentFirstChar2 = 0;
 
     intervals[context] = setInterval(() => {
-      if(currentFirstChar1 + 8 > text1.length) currentFirstChar1 = 0;
-      if(currentFirstChar2 + 8 > text2.length) currentFirstChar2 = 0;
+      if (currentFirstChar1 + 8 > text1.length) currentFirstChar1 = 0;
+      if (currentFirstChar2 + 8 > text2.length) currentFirstChar2 = 0;
       websocketUtils.setTitle(
         context,
         `${text1.substring(currentFirstChar1, currentFirstChar1 + 8)}\n${text2.substring(currentFirstChar2, currentFirstChar2 + 8)}`
@@ -146,6 +146,22 @@ const websocketUtils = {
         context,
         payload: {
           image
+        },
+      };
+      websocket.send(JSON.stringify(data));
+    }
+  },
+
+  setFeedback: (context, icon, title, value, indicator) => {
+    if (websocket) {
+      const data = {
+        event: "setFeedback",
+        context,
+        payload: {
+          'title': title,
+          'value': value,
+          'indicator': indicator,
+          icon
         },
       };
       websocket.send(JSON.stringify(data));

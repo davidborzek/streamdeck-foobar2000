@@ -19,6 +19,22 @@ body {
   display: none;
 }
 
+#dial-turn {
+  display: none;
+}
+
+#title-information {
+  display: none;
+}
+
+#value-information {
+  display: none;
+}
+
+#icon-information {
+  display: none;
+}
+
 input {
   border: 1px solid #3a3a3a;
   background-color: #3d3d3d;

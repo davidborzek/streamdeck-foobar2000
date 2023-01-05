@@ -1,6 +1,32 @@
 {
   "Actions": [
     {
+      "Icon": "images/plugin/category",
+      "Name": "Control Centre",
+      "Controllers": [
+        "Encoder"
+      ],
+      "Encoder": {
+        "StackColor": "#231F20",
+        "Icon": "images/plugin/category",
+        "layout": "$B1",
+        "TriggerDescription": {
+            "Rotate": "Volume or Skip",
+            "Push": "Play/Pause",
+            "Touch": "Play/Pause"
+        }       
+      },  
+      "States": [
+        {
+          "Image": "images/plugin/category",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "Tooltip": "Volume, play/pause and now playing",
+      "UUID": "com.davidborzek.foobar2000.center"
+    },
+    {
       "Icon": "images/actions/playpause/playpause",
       "Name": "Play / pause",
       "States": [

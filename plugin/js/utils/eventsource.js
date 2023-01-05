@@ -28,6 +28,40 @@ const updateCurrentVolumeActions = (player) => {
 let currentPlayingArtist = "";
 let currentPlayingTitle = "";
 
+const updateCenterActions = (player) => {
+  if (player.activeItem.playlistIndex === -1 || player.activeItem.index === -1) {
+    return;
+  }
+
+  foobar
+    .getCurrentArtwork(
+      player.activeItem.playlistIndex,
+      player.activeItem.index
+    ).then((res) => {
+
+      for (idx in contexts.centerAction) {
+        const context = contexts.centerAction[idx]
+
+        //contexts.centerAction.forEach((context) => {
+        if (player.playbackState === "stopped") {
+          intervals[context] && clearInterval(intervals[context]);
+          websocketUtils.setTitle(context, "Stopped");
+          return;
+        }
+
+        intervals[context] && clearInterval(intervals[context]);
+
+        actions.centerAction.currentArtwork = res;
+        actions.centerAction.foobarCurrentPlayback = player
+        actions.centerAction.foobarCurrentVolume = player.volume.value
+        actions.centerAction.setContext(context)
+        actions.centerAction.setSettings(centerSettings[context])
+        actions.centerAction.updateInformation()
+        //});
+      }
+    });
+}
+
 const updateCurrentPlaying = (player) => {
   if (player.activeItem.playlistIndex === -1 || player.activeItem.index === -1) {
     return;
@@ -67,6 +101,8 @@ const updateCurrentPlaying = (player) => {
   currentPlayingTitle = player.activeItem.columns[1];
 };
 
+
+
 const parameters = {
   player: "true",
   trcolumns: "%artist%,%title%,%artist%-%album%-%title%",
@@ -87,13 +123,14 @@ eventSource.onmessage = function ({ data }) {
   const { player } = JSON.parse(data);
   if (player) {
     foobarPlayerState = player;
-    if(typeof contexts === typeof undefined){
+    if (typeof contexts === typeof undefined) {
       return;
     }
     updatePlayPauseActions(player);
     updateToggleMuteActions(player);
     updateCurrentVolumeActions(player);
     updateCurrentPlaying(player);
+    updateCenterActions(player);
   }
 };
 
