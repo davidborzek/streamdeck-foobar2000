@@ -12,12 +12,12 @@ class PlayPauseAction extends Action {
 
   onKeyDown = (coordinates, state) => {
     if (this.foobarPlaybackState === "stopped") {
-      foobar.playRandom((success, msg) => {
+      foobar.triggerPlay((success, msg) => {
         websocketUtils.setState(this.context, state);
         if (!success) {
           websocketUtils.showAlert(this.context);
           websocketUtils.log(
-            "Error to play a random song, check if foobar is running!"
+            "Error to play a song, check if foobar is running!"
           );
         }
       });
